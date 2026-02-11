@@ -1,0 +1,6 @@
+@PotjeraAPI_HostAddress = http://localhost:5202
+
+GET {{PotjeraAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
