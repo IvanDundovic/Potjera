@@ -1,8 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using PotjeraAPI.Data;
+using PotjeraAPI.Interfaces;
+using PotjeraAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IEpisodeService, EpisodeService>();
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<ApplicationDbContex>(options =>
