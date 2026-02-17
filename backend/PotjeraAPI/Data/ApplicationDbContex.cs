@@ -165,8 +165,7 @@ public class ApplicationDbContex(DbContextOptions<ApplicationDbContex> options) 
             entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Text)
-                .IsRequired()
-                .HasColumnType("nvarchar(max)");
+                .IsRequired();
 
             entity.Property(e => e.CorrectAnswer)
                 .IsRequired()

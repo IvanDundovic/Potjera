@@ -1,0 +1,43 @@
+services:
+  potjeraapi:
+    image: ${DOCKER_REGISTRY-}potjeraapi
+    build:
+      context: .
+      dockerfile: PotjeraAPI/Dockerfile
+#  postgres:
+#    image: postgres:latest
+#    container_name: PotjeraAPI.database
+#    environment:
+#        POSTGRES_DB: protjeran
+#        POSTGRES_USER: postgres
+#        POSTGRES_PASSWORD: Admin
+#    volumes:
+#        - postgres_data:/var/lib/postgresql/data 
+#    ports:
+#        - "5432:5432" 
+
+#  pgadmin:
+#    image: dpage/pgadmin4:latest
+#    container_name: PotjeraAPI.pgadmin
+#    environment:
+#        PGADMIN_DEFAULT_EMAIL: protjeraapi@gmail.com
+#        PGADMIN_DEFAULT_PASSWORD: Admin
+#    ports:
+ #       - "5050:80"
+ #   depends_on:
+ #       - postgres
+#    volumes:
+#        - pgadmin_data:/var/lib/pgadmin
+  
+  mailhog: 
+    image: mailhog/mailhog:latest
+    container_name: PotjeraAPI.mailhog
+    ports:
+        - "8025:8025"
+
+#volumes:
+#  postgres_data:
+#  pgadmin_data:
+    
+
+  
