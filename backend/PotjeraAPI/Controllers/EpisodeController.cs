@@ -121,6 +121,34 @@ public class EpisodeController(IEpisodeService episodeService) : ControllerBase
         return Ok(new { message = "Answer successfully deleted." });
     }
     #endregion
+
+    #region Shows
+    [HttpGet("getShows")]
+
+    public async Task<IActionResult> GetAllShowsAsync()
+    {
+        var allShows = await episodeService.GetAllShowsAsync();
+        return Ok(allShows);
+    }
+    #endregion
+
+    #region Hunters
+    [HttpGet("getHunters")]
+    public async Task<IActionResult> GetAllHuntersAsync()
+    {
+        var allHunters = await episodeService.GetAllHuntersAsync();
+        return Ok(allHunters);
+    }
+    #endregion
+
+    #region Categories
+    [HttpGet("getCategories")]
+    public async Task<IActionResult> GetAllCategoriesAsync()
+    {
+        var allCategories = await episodeService.GetAllCategoriesAsync();
+        return Ok(allCategories);
+    }
+    #endregion
 }
 
 

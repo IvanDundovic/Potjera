@@ -291,5 +291,44 @@ public class EpisodeService(ApplicationDbContex contex) : IEpisodeService
         }
         return 3.4;
     }
+
+    public async Task<GetAllShowsDto> GetAllShowsAsync()
+    {
+        var listOfShows = await contex.Shows
+            .Select(s => new ShowDto
+            {
+                Id = s.Id,
+                Name = s.Name,
+                Description = s.Description
+            })
+            .ToListAsync();
+        return new GetAllShowsDto { Shows = listOfShows };
+    }
+    public async Task<GetAllCategoriesDto> GetAllCategoriesAsync()
+    {
+        var listOfCategories = await contex.Categories
+            .Select(c => new CategoryDto
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Description = c.Description
+            })
+            .ToListAsync();
+
+        return new GetAllCategoriesDto { Categories = listOfCategories };
+    }
+    public async Task<GetAllHuntersDto> GetAllHuntersAsync()
+    {
+        var listOfHunters = await contex.Hunters
+    .Select(h => new HunterDto
+    {
+        Id = h.Id,
+        Name = h.Name,
+        Description = h.Description
+    })
+    .ToListAsync();
+
+        return new GetAllHuntersDto { Hunters = listOfHunters };
+    }
 }
 

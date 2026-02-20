@@ -14,6 +14,9 @@ public class ApplicationDbContex(DbContextOptions<ApplicationDbContex> options) 
     public DbSet<RealQuestion> RealQuestions { get; set; }
     public DbSet<Question> Questions { get; set; }
     public DbSet<QuestionOption> QuestionOptions { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<GameSession> GameSessions { get; set; }
+    public DbSet<GameAnswer> GameAnswers { get; set; }
 
     private static void ConfigureUser(ModelBuilder modelBuilder)
     {
@@ -181,7 +184,7 @@ public class ApplicationDbContex(DbContextOptions<ApplicationDbContex> options) 
             entity.HasMany(e => e.RealQuestions)
                 .WithOne(rq => rq.Question)
                 .HasForeignKey(rq => rq.QuestionId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         });
     }
     private static void ConfigureRealAnswer(ModelBuilder modelBuilder)

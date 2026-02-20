@@ -1,0 +1,83 @@
+/* Cijeli accordion */
+
+
+.game-accordion {
+  max-width: 900px;
+  margin: 5px auto;
+}
+
+/* Glavna kartica */
+.game-main-item {
+  background: radial-gradient(circle at top, #0b1c2d, #050b14 80%);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+/* Glavni gumb */
+.game-main-button {
+  background: linear-gradient(90deg, #001f3f, #003366);
+  color: #ffd700 !important;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 10px rgba(0, 224, 255, 0.5);
+}
+
+.game-main-button:not(.collapsed) {
+  color: #00e0ff !important;
+  text-shadow: 0 0 15px #00e0ff;
+}
+
+/* Body */
+.game-main-body {
+  background: #08121f;
+  padding: 30px;
+}
+
+/* Unutarnje kartice */
+.game-item {
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  border: 1px solid #00e0ff;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+  overflow: hidden;
+}
+
+/* Gumb showa */
+.game-button {
+  background: linear-gradient(90deg, #00264d, #004080);
+  color: #00e0ff !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.game-button:hover {
+  background: linear-gradient(90deg, #003366, #0059b3);
+  color: #ffd700 !important;
+  transform: scale(1.01);
+}
+
+/* Otvoreni opis */
+.game-body {
+  background: #06101c;
+  border-top: 1px solid #ffd700;
+  color: #ffffff;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Animacija */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

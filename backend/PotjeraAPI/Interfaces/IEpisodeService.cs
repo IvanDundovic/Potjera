@@ -22,5 +22,9 @@ public interface IEpisodeService
     Task AddRealAnswerAsync(RealAnswerDto dto);
     Task DeleteRealAnswerAsync(RealAnswerDto dto);
     Task<GetAllRealAnswersDto> GetAllRealAnswersAsync(RealAnswerDto dto);
+
+    Task<GetAllShowsDto> GetAllShowsAsync();
+    Task<GetAllCategoriesDto> GetAllCategoriesAsync();
+    Task<GetAllHuntersDto> GetAllHuntersAsync();
 }
 

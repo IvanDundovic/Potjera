@@ -13,7 +13,7 @@ namespace PotjeraAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -23,7 +23,7 @@ namespace PotjeraAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -113,9 +113,9 @@ namespace PotjeraAPI.Migrations
                 {
                     table.PrimaryKey("PK_Questions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Questions_Category_CategoryId",
+                        name: "FK_Questions_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -127,7 +127,7 @@ namespace PotjeraAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GameSession",
+                name: "GameSessions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -139,15 +139,15 @@ namespace PotjeraAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GameSession", x => x.Id);
+                    table.PrimaryKey("PK_GameSessions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_GameSession_Episodes_EpisodeId",
+                        name: "FK_GameSessions_Episodes_EpisodeId",
                         column: x => x.EpisodeId,
                         principalTable: "Episodes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_GameSession_Users_UserId",
+                        name: "FK_GameSessions_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -231,7 +231,7 @@ namespace PotjeraAPI.Migrations
                         column: x => x.QuestionId,
                         principalTable: "Questions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_RealQuestions_RealCandidates_RealCandidateId",
                         column: x => x.RealCandidateId,
@@ -241,7 +241,7 @@ namespace PotjeraAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GameAnswer",
+                name: "GameAnswers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -254,15 +254,15 @@ namespace PotjeraAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GameAnswer", x => x.Id);
+                    table.PrimaryKey("PK_GameAnswers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_GameAnswer_GameSession_GameSessionId",
+                        name: "FK_GameAnswers_GameSessions_GameSessionId",
                         column: x => x.GameSessionId,
-                        principalTable: "GameSession",
+                        principalTable: "GameSessions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_GameAnswer_RealQuestions_RealQuestionId",
+                        name: "FK_GameAnswers_RealQuestions_RealQuestionId",
                         column: x => x.RealQuestionId,
                         principalTable: "RealQuestions",
                         principalColumn: "Id",
@@ -300,23 +300,23 @@ namespace PotjeraAPI.Migrations
                 column: "ShowId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GameAnswer_GameSessionId",
-                table: "GameAnswer",
+                name: "IX_GameAnswers_GameSessionId",
+                table: "GameAnswers",
                 column: "GameSessionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GameAnswer_RealQuestionId",
-                table: "GameAnswer",
+                name: "IX_GameAnswers_RealQuestionId",
+                table: "GameAnswers",
                 column: "RealQuestionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GameSession_EpisodeId",
-                table: "GameSession",
+                name: "IX_GameSessions_EpisodeId",
+                table: "GameSessions",
                 column: "EpisodeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GameSession_UserId",
-                table: "GameSession",
+                name: "IX_GameSessions_UserId",
+                table: "GameSessions",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -376,7 +376,7 @@ namespace PotjeraAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "GameAnswer");
+                name: "GameAnswers");
 
             migrationBuilder.DropTable(
                 name: "QuestionOptions");
@@ -385,7 +385,7 @@ namespace PotjeraAPI.Migrations
                 name: "RealAnswers");
 
             migrationBuilder.DropTable(
-                name: "GameSession");
+                name: "GameSessions");
 
             migrationBuilder.DropTable(
                 name: "RealQuestions");
@@ -400,7 +400,7 @@ namespace PotjeraAPI.Migrations
                 name: "RealCandidates");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Episodes");

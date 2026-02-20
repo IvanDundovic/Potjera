@@ -12,7 +12,7 @@ using PotjeraAPI.Data;
 namespace PotjeraAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContex))]
-    [Migration("20260217114401_InitialCreate")]
+    [Migration("20260220133153_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -44,7 +44,7 @@ namespace PotjeraAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("PotjeraAPI.Models.Episode", b =>
@@ -114,7 +114,7 @@ namespace PotjeraAPI.Migrations
 
                     b.HasIndex("RealQuestionId");
 
-                    b.ToTable("GameAnswer");
+                    b.ToTable("GameAnswers");
                 });
 
             modelBuilder.Entity("PotjeraAPI.Models.GameSession", b =>
@@ -143,7 +143,7 @@ namespace PotjeraAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("GameSession");
+                    b.ToTable("GameSessions");
                 });
 
             modelBuilder.Entity("PotjeraAPI.Models.Hunter", b =>
@@ -527,7 +527,7 @@ namespace PotjeraAPI.Migrations
                     b.HasOne("PotjeraAPI.Models.Question", "Question")
                         .WithMany("RealQuestions")
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("PotjeraAPI.Models.RealCandidate", "RealCandidate")
