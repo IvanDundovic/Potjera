@@ -1,0 +1,916 @@
+/* ===== PAGE CONTAINER ===== */
+.add-episode-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: linear-gradient(to bottom, #050b14, #0b1c2d);
+  min-height: 100vh;
+}
+
+/* Page header */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  color: #ffd700;
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px #00e0ff, 0 0 40px #00e0ff;
+  margin: 0;
+  padding: 20px;
+}
+
+/* ===== PROGRESS STEPS ===== */
+.progress-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  border: 3px solid #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1.5rem;
+  font-weight: 800;
+  transition: all 0.4s ease;
+}
+
+.step-label {
+  margin-top: 12px;
+  color: #888;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.step.active .step-number {
+  background: linear-gradient(145deg, #00e0ff, #0099cc);
+  border-color: #00e0ff;
+  color: #000;
+  box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
+  animation: pulse 2s infinite;
+}
+
+.step.active .step-label {
+  color: #00e0ff;
+  text-shadow: 0 0 10px #00e0ff;
+}
+
+.step.completed .step-number {
+  background: linear-gradient(145deg, #00ff88, #00cc66);
+  border-color: #00ff88;
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+}
+
+.step.completed .step-label {
+  color: #00ff88;
+}
+
+.step.completed .step-number::after {
+  content: "✓";
+  position: absolute;
+  font-size: 1.8rem;
+}
+
+.step-divider {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #555, #00e0ff);
+  margin: 0 20px;
+  border-radius: 2px;
+  position: relative;
+  top: -25px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 224, 255, 1);
+  }
+}
+
+/* ===== CONTAINERS ===== */
+.episode-form {
+  margin-bottom: 40px;
+}
+
+.candidates-container {
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== ACCORDION STYLES ===== */
+
+/* Cijeli accordion */
+.game-accordion {
+  max-width: 900px;
+  margin: 5px auto;
+  background: radial-gradient(circle at top, #0b1c2d, #050b14 80%);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+/* Glavna kartica */
+.game-main-item {
+  background: radial-gradient(circle at top, #0b1c2d, #050b14 80%);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+/* Glavni gumb */
+.game-main-button {
+  background: linear-gradient(90deg, #001f3f, #003366);
+  color: #ffd700 !important;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 10px rgba(0, 224, 255, 0.5);
+}
+
+.game-main-button:not(.collapsed) {
+  color: #00e0ff !important;
+  text-shadow: 0 0 15px #00e0ff;
+}
+
+/* Body */
+.game-main-body {
+  background: #08121f;
+  padding: 30px;
+}
+
+/* Unutarnje kartice */
+.game-item {
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  border: 1px solid #00e0ff;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+  overflow: hidden;
+}
+
+/* Gumb showa */
+.game-button {
+  background: linear-gradient(90deg, #00264d, #004080);
+  color: #00e0ff !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.game-button:hover {
+  background: linear-gradient(90deg, #003366, #0059b3);
+  color: #ffd700 !important;
+  transform: scale(1.01);
+}
+
+/* Otvoreni opis */
+.game-body {
+  background: #06101c;
+  border-top: 1px solid #ffd700;
+  color: #ffffff;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ===== FORM ELEMENTS ===== */
+
+/* Form inputi */
+.game-accordion .form-control,
+.game-accordion .form-select,
+.game-accordion textarea {
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  border: 1px solid #00e0ff;
+  border-radius: 8px;
+  color: #00e0ff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.game-accordion .form-control:focus,
+.game-accordion .form-select:focus,
+.game-accordion textarea:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px #00e0ff inset;
+  color: #ffd700;
+  background: linear-gradient(145deg, #132f4c, #0d1b2a);
+  outline: none;
+}
+
+.game-accordion .form-control:disabled,
+.game-accordion .form-select:disabled {
+  background: linear-gradient(145deg, #0a1420, #0f1b2a);
+  border-color: #666;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Labels */
+.game-accordion .form-floating {
+  margin-bottom: 20px;
+}
+
+.game-accordion .form-floating > label {
+  color: #00e0ff;
+  font-weight: 600;
+  padding-left: 15px;
+}
+
+.game-accordion .form-floating .form-control:focus + label,
+.game-accordion .form-floating .form-select:focus + label {
+  color: #ffd700;
+  text-shadow: 0 0 8px #00e0ff;
+}
+
+/* Select dropdown opcije */
+.game-accordion .form-select option {
+  background-color: #0d1b2a;
+  color: #00e0ff;
+  padding: 10px;
+}
+
+.game-accordion .form-select option:checked {
+  background-color: #00e0ff;
+  color: #000;
+}
+
+/* Textarea */
+.game-accordion textarea.form-control {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Checkbox */
+.game-accordion .form-check {
+  margin-bottom: 15px;
+  padding-left: 2rem;
+}
+
+.game-accordion .form-check-input {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #0d1b2a;
+  border: 2px solid #00e0ff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.15rem;
+}
+
+.game-accordion .form-check-input:checked {
+  background-color: #00e0ff;
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.6);
+}
+
+.game-accordion .form-check-input:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 8px #00e0ff;
+  outline: none;
+}
+
+.game-accordion .form-check-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.game-accordion .form-check-label {
+  color: #00e0ff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* ===== BUTTONS ===== */
+
+.game-accordion button {
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.game-accordion .btn-primary {
+  background: linear-gradient(90deg, #00e0ff, #0099cc);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
+}
+
+.game-accordion .btn-primary:hover {
+  background: linear-gradient(90deg, #0099cc, #00e0ff);
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(0, 224, 255, 0.8);
+}
+
+.game-accordion .btn-warning {
+  background: linear-gradient(90deg, #ffa500, #ff8c00);
+  color: #000;
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+  margin-right: 10px;
+}
+
+.game-accordion .btn-warning:hover {
+  background: linear-gradient(90deg, #ff8c00, #ffa500);
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(255, 165, 0, 0.8);
+}
+
+.game-accordion .btn-danger {
+  background: linear-gradient(90deg, #ff4444, #cc0000);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+  margin-left: 10px;
+}
+
+.game-accordion .btn-danger:hover {
+  background: linear-gradient(90deg, #cc0000, #ff4444);
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(255, 68, 68, 0.8);
+}
+
+.game-accordion .btn-success {
+  background: linear-gradient(90deg, #ffd700, #ffaa00);
+  color: #000;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.game-accordion .btn-success:hover {
+  background: linear-gradient(90deg, #ffaa00, #ffd700);
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+}
+
+.game-accordion .btn-add-new {
+  background: linear-gradient(90deg, #00ff88, #00cc66);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  width: 100%;
+  margin-top: 20px;
+}
+
+.game-accordion .btn-add-new:hover {
+  background: linear-gradient(90deg, #00cc66, #00ff88);
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+}
+
+.game-accordion button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ===== TYPOGRAPHY ===== */
+
+/* Naslovi */
+.game-accordion h2 {
+  color: #ffd700;
+  font-weight: 800;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px #00e0ff;
+  text-align: center;
+}
+
+.game-accordion h3 {
+  color: #00e0ff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px #00e0ff;
+}
+
+.game-accordion h4 {
+  color: #ffd700;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* ===== SECTIONS ===== */
+
+.game-accordion .candidate-section,
+.game-accordion .question-section,
+.game-accordion .answer-section {
+  margin-bottom: 30px;
+  padding: 25px;
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  border: 1px solid #00e0ff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.game-accordion .candidate-section h3,
+.game-accordion .question-section h3,
+.game-accordion .answer-section h3 {
+  color: #ffd700 !important;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px #00e0ff;
+}
+
+.game-accordion .finish-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: linear-gradient(145deg, #1a0f00, #2d1a00);
+  border: 2px solid #ffd700;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Button group */
+.game-accordion .button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.game-accordion .button-group button {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* ===== LISTS ===== */
+
+.game-accordion .list-group {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0 0;
+}
+
+.game-accordion .list-group-item {
+  background: linear-gradient(145deg, #0d1b2a, #1a2a3f) !important;
+  border: 1px solid #00e0ff !important;
+  border-radius: 10px;
+  color: #ffffff !important;
+  padding: 15px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.game-accordion .list-group-item:hover {
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.4);
+  transform: translateX(5px);
+}
+
+.game-accordion .list-group-item strong {
+  color: #00e0ff;
+  font-size: 1.05rem;
+}
+
+/* Kandidati lista */
+.all-candidates-list {
+  background: linear-gradient(145deg, #0d1b2a, #1a2a3f);
+  border: 2px solid #00e0ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+}
+
+.all-candidates-list h4 {
+  color: #00e0ff;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 5px #00e0ff;
+}
+
+.all-candidates-list .list-group-item {
+  background: linear-gradient(145deg, #0a1420, #132f4c) !important;
+  border: 1px solid #00e0ff !important;
+  border-radius: 8px;
+  color: #ffffff !important;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.all-candidates-list .list-group-item:hover {
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.4);
+  transform: translateX(3px);
+  background: linear-gradient(145deg, #132f4c, #0d1b2a) !important;
+}
+
+.all-candidates-list .list-group-item strong {
+  color: #ffd700;
+  font-size: 1rem;
+}
+
+.candidate-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+/* Akcije gumbovi */
+.candidate-actions {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.all-candidates-list .list-group-item:hover .candidate-actions {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.action-btn {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background-color: #00e0ff;
+  color: #000;
+}
+
+.edit-btn:hover {
+  background-color: #0099cc;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background-color: #ff4444;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+  transform: scale(1.05);
+}
+
+/* ===== PANELS ===== */
+
+.candidates-info-panel {
+  background: linear-gradient(145deg, #0a1420, #132f4c);
+  border: 2px solid #ffd700;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  align-items: center;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(0, 224, 255, 0.05);
+  min-width: 150px;
+}
+
+.info-label {
+  color: #00e0ff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-value {
+  color: #ffd700;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px #ffd700;
+}
+
+.added-questions-summary {
+  background: linear-gradient(145deg, #0a1420, #132f4c);
+  border: 2px solid #ffd700;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.question-check {
+  margin-left: 15px;
+  color: #00ff88;
+  font-size: 1.3rem;
+  text-shadow: 0 0 8px #00ff88;
+}
+
+.answer-details {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #00e0ff55;
+  font-size: 0.95rem;
+}
+
+.answer-details > div {
+  margin: 5px 0;
+  color: #b8e0ff;
+}
+
+.answer-label {
+  color: #ffd700;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.answer-details .correct {
+  color: #00ff88;
+  font-weight: 700;
+  margin-left: 8px;
+  text-shadow: 0 0 5px #00ff88;
+}
+
+.answer-details .incorrect {
+  color: #ff4444;
+  font-weight: 700;
+  margin-left: 8px;
+  text-shadow: 0 0 5px #ff4444;
+}
+
+/* ===== ALERTS ===== */
+
+.alert {
+  background: linear-gradient(145deg, #1a0f00, #2d1a00);
+  border: 2px solid #ffd700;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  color: #ffffff;
+}
+
+.alert-success {
+  background: linear-gradient(145deg, #0a2000, #1a3300);
+  border: 2px solid #00ff88;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.alert-success .alert-heading {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.alert-success p {
+  color: #b8e0ff;
+}
+
+.alert-success hr {
+  border-color: #00ff8855;
+}
+
+/* ===== SPECIAL STYLES ===== */
+
+.max-candidates-reached {
+  background: linear-gradient(145deg, #2d1a00, #1a0f00);
+  border: 2px solid #ff4444;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+  animation: fadeIn 0.5s ease;
+}
+
+.max-candidates-reached h3 {
+  color: #ff4444;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px #ff4444;
+}
+
+.max-candidates-reached p {
+  color: #ffaa00;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Custom select */
+.custom-select-label {
+  display: block;
+  color: #00e0ff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  padding-left: 5px;
+}
+
+.custom-react-select {
+  margin-bottom: 20px;
+}
+
+.custom-select__control--is-disabled {
+  background: linear-gradient(145deg, #0a1420, #0f1b2a) !important;
+  border-color: #555 !important;
+  opacity: 0.6;
+  cursor: not-allowed !important;
+}
+
+.custom-select__single-value--is-disabled {
+  color: #888 !important;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.game-accordion .form-floating,
+.game-accordion .candidate-section,
+.game-accordion .question-section,
+.game-accordion .answer-section,
+.game-accordion .finish-section {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 992px) {
+  .episode-form .form-row-three {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+
+  .progress-steps {
+    padding: 20px 10px;
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .step-label {
+    font-size: 0.85rem;
+  }
+
+  .step-divider {
+    width: 60px;
+    top: -20px;
+  }
+
+  .add-episode-page {
+    padding: 20px 10px;
+  }
+
+  .game-accordion {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .game-accordion h2 {
+    font-size: 1.4rem;
+  }
+
+  .game-accordion h3 {
+    font-size: 1.2rem;
+  }
+
+  .game-accordion .button-group button {
+    min-width: 100%;
+  }
+
+  .candidates-info-panel {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .info-item {
+    border-bottom: 1px solid #00e0ff33;
+    padding-bottom: 10px;
+  }
+
+  .info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .candidate-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .candidate-actions {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    padding-top: 10px;
+    border-top: 1px solid #00e0ff;
+  }
+}
+
+@media (max-width: 480px) {
+  .step-divider {
+    width: 40px;
+  }
+
+  .step-label {
+    font-size: 0.75rem;
+    max-width: 80px;
+  }
+
+  .game-accordion {
+    padding: 15px;
+  }
+
+  .game-accordion h2 {
+    font-size: 1.2rem;
+  }
+
+  .game-accordion h3 {
+    font-size: 1rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group button {
+    min-width: 100%;
+  }
+}

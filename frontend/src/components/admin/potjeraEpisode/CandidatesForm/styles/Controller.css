@@ -1,0 +1,552 @@
+/* ===== MAIN ACCORDION CONTAINER ===== */
+
+.game-accordion {
+  max-width: 900px;
+  margin: 5px auto;
+  background: radial-gradient(circle at top, #0b1c2d, #050b14 80%);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+/* ===== ACCORDION ITEMS ===== */
+
+.accordion-item {
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  border: 1px solid #00e0ff !important;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+}
+
+.accordion-header {
+  background: linear-gradient(90deg, #001f3f, #003366);
+  border-bottom: 2px solid #ffd700 !important;
+}
+
+.accordion-button {
+  background: linear-gradient(90deg, #001f3f, #003366);
+  color: #ffd700 !important;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 15px 20px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 10px rgba(0, 224, 255, 0.5);
+}
+
+.accordion-button:not(.collapsed) {
+  background: linear-gradient(90deg, #003366, #004da6);
+  color: #00e0ff !important;
+  text-shadow: 0 0 15px #00e0ff;
+  box-shadow: inset 0 0 15px rgba(0, 224, 255, 0.6);
+}
+
+.accordion-button:hover {
+  background: linear-gradient(90deg, #003366, #004da6);
+  color: #00e0ff !important;
+  transform: translateX(2px);
+}
+
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2300e0ff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  filter: invert(1);
+}
+
+/* ===== ACCORDION BODY ===== */
+
+.accordion-collapse {
+  background: #08121f;
+  border-top: 2px solid #00e0ff;
+}
+
+.accordion-body {
+  padding: 25px;
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  color: #ffffff;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ===== CANDIDATE DETAILS ===== */
+
+.all-candidates-list {
+  background: linear-gradient(145deg, #0d1b2a, #1a2a3f);
+  border: 2px solid #00e0ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+}
+
+.all-candidates-list h4 {
+  color: #00e0ff;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 5px #00e0ff;
+  font-weight: 700;
+}
+
+.all-candidates-list .list-group {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.all-candidates-list .list-group-item {
+  background: linear-gradient(145deg, #0a1420, #132f4c) !important;
+  border: 1px solid #00e0ff !important;
+  border-radius: 8px;
+  color: #ffffff !important;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.all-candidates-list .list-group-item:hover {
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.4);
+  transform: translateX(3px);
+  background: linear-gradient(145deg, #132f4c, #0d1b2a) !important;
+}
+
+.all-candidates-list .list-group-item strong {
+  color: #ffd700;
+  font-size: 1rem;
+  text-shadow: 0 0 5px #ffd700;
+}
+
+.candidate-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.candidate-details span {
+  color: #b8e0ff;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(0, 224, 255, 0.1);
+}
+
+.candidate-details .text-danger {
+  color: #ff4444 !important;
+  background: rgba(255, 68, 68, 0.15) !important;
+  text-shadow: 0 0 5px #ff4444;
+  font-weight: 600;
+}
+
+.candidate-details .text-success {
+  color: #00ff88 !important;
+  background: rgba(0, 255, 136, 0.15) !important;
+  text-shadow: 0 0 5px #00ff88;
+  font-weight: 600;
+}
+
+/* ===== ACTION BUTTONS ===== */
+
+.candidate-actions {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.all-candidates-list .list-group-item:hover .candidate-actions {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.action-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background-color: #00e0ff;
+  color: #000;
+}
+
+.edit-btn:hover {
+  background-color: #0099cc;
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.6);
+}
+
+.delete-btn {
+  background-color: #ff4444;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
+}
+
+/* ===== QUESTIONS ACCORDION ===== */
+
+.accordion {
+  --bs-accordion-padding-y: 15px;
+  --bs-accordion-padding-x: 20px;
+}
+
+.accordion-item:has(.accordion-collapse .list-group) {
+  border: 1px solid #00e0ff;
+}
+
+/* ===== QUESTION ITEMS ===== */
+
+.mb-3.p-3.border.rounded {
+  background: linear-gradient(145deg, #0a1420, #132f4c) !important;
+  border: 1px solid #00e0ff !important;
+  border-radius: 12px !important;
+  padding: 15px !important;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.mb-3.p-3.border.rounded:hover {
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+  transform: translateX(2px);
+}
+
+.mb-3.p-3.border.rounded strong {
+  color: #00e0ff;
+  font-size: 1.05rem;
+  text-shadow: 0 0 5px #00e0ff;
+}
+
+.mb-3.p-3.border.rounded > div {
+  color: #b8e0ff;
+  margin: 8px 0;
+  font-size: 0.95rem;
+  padding: 4px 0;
+}
+
+.mb-3.p-3.border.rounded > div:first-of-type {
+  margin-top: 12px;
+  color: #00ff88;
+  font-weight: 600;
+}
+
+/* ===== FORM ELEMENTS ===== */
+
+.game-accordion .form-floating {
+  margin-bottom: 20px;
+}
+
+.game-accordion .form-control,
+.game-accordion .form-select,
+.game-accordion textarea {
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  border: 1px solid #00e0ff;
+  border-radius: 8px;
+  color: #00e0ff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.game-accordion .form-control:focus,
+.game-accordion .form-select:focus,
+.game-accordion textarea:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px #00e0ff inset;
+  color: #ffd700;
+  background: linear-gradient(145deg, #132f4c, #0d1b2a);
+  outline: none;
+}
+
+.game-accordion .form-control:disabled,
+.game-accordion .form-select:disabled {
+  background: linear-gradient(145deg, #0a1420, #0f1b2a);
+  border-color: #666;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.game-accordion .form-floating > label {
+  color: #00e0ff;
+  font-weight: 600;
+  padding-left: 15px;
+}
+
+.game-accordion .form-floating .form-control:focus + label,
+.game-accordion .form-floating .form-select:focus + label {
+  color: #ffd700;
+  text-shadow: 0 0 8px #00e0ff;
+}
+
+.game-accordion .form-select option {
+  background-color: #0d1b2a;
+  color: #00e0ff;
+  padding: 10px;
+}
+
+.game-accordion .form-select option:checked {
+  background-color: #00e0ff;
+  color: #000;
+}
+
+/* ===== BUTTONS ===== */
+
+.game-accordion .btn-primary {
+  background: linear-gradient(90deg, #00e0ff, #0099cc);
+  color: #000;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+  cursor: pointer;
+}
+
+.game-accordion .btn-primary:hover {
+  background: linear-gradient(90deg, #0099cc, #00e0ff);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
+}
+
+.game-accordion .btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
+}
+
+.game-accordion .btn-success {
+  background: linear-gradient(90deg, #ffd700, #ffaa00);
+  color: #000;
+  font-weight: 800;
+  padding: 12px 30px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  cursor: pointer;
+  width: 100%;
+}
+
+.game-accordion .btn-success:hover {
+  background: linear-gradient(90deg, #ffaa00, #ffd700);
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+}
+
+.game-accordion button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ===== ALERTS ===== */
+
+.alert {
+  background: linear-gradient(145deg, #0a2000, #1a3300);
+  border: 2px solid #00ff88 !important;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+  color: #ffffff;
+}
+
+.alert-heading {
+  color: #00ff88;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px #00ff88;
+}
+
+.alert p {
+  color: #b8e0ff;
+  font-size: 0.95rem;
+}
+
+.alert hr {
+  border-color: #00ff8855;
+  margin: 15px 0;
+}
+
+/* ===== SECTIONS ===== */
+
+.candidate-section,
+.question-section,
+.answer-section {
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  border: 1px solid #00e0ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+}
+
+.candidate-section h2,
+.question-section h2,
+.answer-section h2 {
+  color: #ffd700;
+  font-weight: 800;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px #00e0ff;
+}
+
+/* ===== TEXT & TYPOGRAPHY ===== */
+
+.text-muted {
+  color: #888 !important;
+  font-style: italic;
+  text-align: center;
+  padding: 15px;
+}
+
+h2 {
+  color: #ffd700;
+  font-weight: 800;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px #00e0ff;
+  text-align: center;
+}
+
+h3 {
+  color: #00e0ff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 8px #00e0ff;
+}
+
+h4 {
+  color: #ffd700;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.accordion-body,
+.accordion-collapse {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .game-accordion {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .candidate-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .candidate-details span {
+    width: 100%;
+    display: block;
+  }
+
+  .candidate-actions {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    padding-top: 10px;
+    border-top: 1px solid #00e0ff;
+    justify-content: flex-start;
+  }
+
+  .all-candidates-list .list-group-item {
+    padding: 15px;
+  }
+
+  .mb-3.p-3.border.rounded {
+    padding: 12px !important;
+  }
+
+  .accordion-button {
+    font-size: 0.95rem;
+    padding: 12px 15px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-accordion {
+    padding: 15px;
+    margin: 5px;
+  }
+
+  .all-candidates-list {
+    padding: 15px;
+  }
+
+  .all-candidates-list h4 {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .accordion-button {
+    font-size: 0.9rem;
+  }
+
+  .candidate-details {
+    gap: 8px;
+  }
+
+  .candidate-details span {
+    font-size: 0.85rem;
+  }
+}

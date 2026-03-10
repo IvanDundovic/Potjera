@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ShowsSection from "../components/admin/ShowsSection";
-import UsersSection from "../components/admin/UsersSection";
-import HuntersSection from "../components/admin/HuntersSection";
-import CategoriesSection from "../components/admin/CategoriesSection"
+import ShowsSection from "../../components/admin/ShowsSection";
+import UsersSection from "../../components/admin/UsersSection";
+import HuntersSection from "../../components/admin/HuntersSection";
+import CategoriesSection from "../../components/admin/CategoriesSection"
 
 const AdminPage = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null);

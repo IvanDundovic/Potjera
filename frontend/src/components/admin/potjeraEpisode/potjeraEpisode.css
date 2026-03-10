@@ -1,0 +1,94 @@
+/* Glavni container forme */
+.potj-form {
+  max-width: 900px;
+  margin: 20px auto;
+  background: radial-gradient(circle at top, #0b1c2d, #050b14 80%);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+/* Naslov forme */
+.potj-form h2 {
+  color: #ffd700;
+  font-weight: 800;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00e0ff;
+  text-align: center;
+}
+
+/* Form-floating inputi */
+.potj-form .form-floating {
+  margin-bottom: 20px;
+}
+
+.potj-form .form-control,
+.potj-form .form-select {
+  background: linear-gradient(145deg, #0d1b2a, #132f4c);
+  border: 1px solid #00e0ff;
+  border-radius: 12px;
+  color: #00e0ff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.potj-form .form-control:focus,
+.potj-form .form-select:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px #00e0ff inset;
+  color: #ffd700;
+  background: linear-gradient(145deg, #132f4c, #0d1b2a);
+}
+
+/* Placeholder / label stil */
+.potj-form .form-floating > label {
+  color: #00e0ff;
+  font-weight: 600;
+}
+
+.potj-form .form-floating .form-control:focus + label,
+.potj-form .form-floating .form-select:focus + label {
+  color: #ffd700;
+  text-shadow: 0 0 8px #00e0ff;
+}
+
+/* Submit gumb */
+.potj-form button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-weight: 700;
+  color: #000;
+  background: linear-gradient(90deg, #ffd700, #ffdd55);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.potj-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #ffdd55, #ffd700);
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+}
+
+/* Animacija prilikom fokusa ili prikaza */
+.potj-form .form-floating,
+.potj-form button {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

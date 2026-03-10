@@ -9,6 +9,7 @@ public class QuestionDto
     public int CategoryId { get; set; }
     public int Difficulty { get; set; }
     public int ShowId { get; set; }
+    public List<string>? Options { get; set; }
     // real question
     public int RealQuestionId { get; set; }
     public int EpisodeId { get; set; }

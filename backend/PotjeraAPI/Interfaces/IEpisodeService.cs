@@ -4,23 +4,24 @@ namespace PotjeraAPI.Interfaces;
 
 public interface IEpisodeService
 {
-    Task AddEpisodeAsync(EpisodeDto dto);
+    Task<EpisodeDto> AddEpisodeAsync(EpisodeDto dto);
     Task DeleteEpisodeAsync(EpisodeDto dto);
     Task<GetAllEpisodesResponseDto> GetAllEpisodesAsync(EpisodeDto dto);
-    Task EditEpisodeAsync(EpisodeDto dto);
+    Task<EpisodeDto> EditEpisodeAsync(EpisodeDto dto);
 
-    Task AddRealCandidateAsync(RealCandidateDto dto);
+    Task<RealCandidateDto> AddRealCandidateAsync(RealCandidateDto dto);
     Task DeleteRealCandidateAsync(RealCandidateDto dto);
-    Task UpdateRealCandidateAsync(RealCandidateDto dto);
-    Task<GetAllRealCandidatesDto> GetAllRealCandidatesAsync(RealCandidateDto dto);
+    Task<RealCandidateDto> UpdateRealCandidateAsync(RealCandidateDto dto);
+    Task<GetAllRealCandidatesDto> GetAllRealCandidatesAsync(int episodeId);
 
-    Task AddRealQuestionForCandidateAsync(QuestionDto dto);
+    Task<QuestionDto> AddRealQuestionForCandidateAsync(QuestionDto dto);
     Task DeleteRealQuestionForCandidateAsync(QuestionDto dto);
     Task<GetAllQuestionsForCandidateDto> GetAllRealQuestionsForCandidateAsync(QuestionDto dto);
-    Task UpdateRealQuestionForCandidateAsync(QuestionDto dto);
+    Task<QuestionDto> UpdateRealQuestionForCandidateAsync(QuestionDto dto);
 
-    Task AddRealAnswerAsync(RealAnswerDto dto);
+    Task<RealAnswerDto> AddRealAnswerAsync(RealAnswerDto dto);
     Task DeleteRealAnswerAsync(RealAnswerDto dto);
+    Task<RealAnswerDto> UpdateRealAnswer(RealAnswerDto dto);
     Task<GetAllRealAnswersDto> GetAllRealAnswersAsync(RealAnswerDto dto);
 
     Task<GetAllShowsDto> GetAllShowsAsync();

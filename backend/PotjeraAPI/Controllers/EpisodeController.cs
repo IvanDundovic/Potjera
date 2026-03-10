@@ -12,15 +12,15 @@ public class EpisodeController(IEpisodeService episodeService) : ControllerBase
     [HttpPost("addEpisode")]
     public async Task<IActionResult> AddEpisodeAsync([FromBody]EpisodeDto dto)
     {
-        await episodeService.AddEpisodeAsync(dto);
-        return Ok(new { message = "Episode successfully added." });
+        var result = await episodeService.AddEpisodeAsync(dto);
+        return Ok(result);
     }
 
     [HttpPut("editEpisode")]
     public async Task<IActionResult> EditEpisodeAsync([FromBody]EpisodeDto dto)
     {
-        await episodeService.EditEpisodeAsync(dto);
-        return Ok(new { message = "Episode successfully edited." });
+        var result = await episodeService.EditEpisodeAsync(dto);
+        return Ok(result);
     }
 
     [HttpGet("getEpisodes")]
@@ -42,21 +42,21 @@ public class EpisodeController(IEpisodeService episodeService) : ControllerBase
     [HttpPost("addCandidate")]
     public async Task<IActionResult> AddQuestionAsync([FromBody] RealCandidateDto dto)
     {
-        await episodeService.AddRealCandidateAsync(dto);
-        return Ok(new { message = "Candidate successfully added." });
+        var result =  await episodeService.AddRealCandidateAsync(dto);
+        return Ok(result);
     }
 
     [HttpPut("editCandidate")]
     public async Task<IActionResult> EditCandidateAsync([FromBody] RealCandidateDto dto)
     {
-        await episodeService.UpdateRealCandidateAsync(dto);
-        return Ok(new { message = "Candidate successfully edited." });
+        var result = await episodeService.UpdateRealCandidateAsync(dto);
+        return Ok(result);
     }
 
     [HttpGet("getCandidates")]
-    public async Task<IActionResult> GetAllCandidatesAsync([FromQuery] RealCandidateDto dto)
+    public async Task<IActionResult> GetAllCandidatesAsync([FromQuery] int episodeId)
     {
-        var allCandidates = await episodeService.GetAllRealCandidatesAsync(dto);
+        var allCandidates = await episodeService.GetAllRealCandidatesAsync(episodeId);
         return Ok(allCandidates);
     }
 
@@ -72,15 +72,15 @@ public class EpisodeController(IEpisodeService episodeService) : ControllerBase
     [HttpPost("addQuestion")]
     public async Task<IActionResult> AddQuestionAsync([FromBody] QuestionDto dto)
     {
-        await episodeService.AddRealQuestionForCandidateAsync(dto);
-        return Ok(new { message = "Question successfully added." });
+        var result = await episodeService.AddRealQuestionForCandidateAsync(dto);
+        return Ok(result);
     }
 
     [HttpPut("editQuestion")]
     public async Task<IActionResult> EditQuestionAsync([FromBody] QuestionDto dto)
     {
-        await episodeService.UpdateRealQuestionForCandidateAsync(dto);
-        return Ok(new { message = "Question successfully edited." });
+        var result = await episodeService.UpdateRealQuestionForCandidateAsync(dto);
+        return Ok(result);
     }
 
     [HttpGet("getQuestions")]
@@ -103,10 +103,16 @@ public class EpisodeController(IEpisodeService episodeService) : ControllerBase
     [HttpPost("addAnswer")]
     public async Task<IActionResult> AddAnswerAsync([FromBody] RealAnswerDto dto)
     {
-        await episodeService.AddRealAnswerAsync(dto);
-        return Ok(new { message = "Answer successfully added." });
+        var result = await episodeService.AddRealAnswerAsync(dto);
+        return Ok(result);
     }
+    [HttpPut("editAnswer")]
 
+    public async Task<IActionResult> EditAnswerAsync([FromBody] RealAnswerDto dto)
+    {
+        var result = await episodeService.UpdateRealAnswer(dto);
+        return Ok(result);
+    }
     [HttpGet("getAnswers")]
     public async Task<IActionResult> GetAllAnswersAsync([FromQuery] RealAnswerDto dto)
     {
